@@ -1,0 +1,70 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+  <arg name="node_name" default="vesc_driver_node" />
+  <arg name="node_start_delay" default="1.0"/>
+
+  <!-- Optionally launch in GDB, for debugging -->
+  <arg name="debug" default="false" />
+  <arg if="$(arg debug)" name="launch_prefix" value="xterm -e gdb --args" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  
+  <!-- VESC driver parameters -->
+  <arg name="vesc_port" default="/dev/ttyVESC" />
+  
+
+  <!-- VESC driver node -->
+  <node pkg="vesc_driver" type="vesc_driver_node" name="$(arg node_name)"
+      output="screen" launch-prefix="$(arg launch_prefix)" >
+  <param name="port" value="$(arg vesc_port)" />
+  </node>
+
+
+  <!-- rosserial node -->
+  <arg name="rosserial_name" default="rosserial_node" />
+  <arg name="arduino_port" default="/dev/ttyARDUINO" />
+  <arg name="arduino_baud" default="115200" />
+  <arg name="rosserial_name2" default="rosserial_node2" />
+  <arg name="arduino_port2" default="/dev/ttyARDUINO2" />
+
+  <node pkg="rosserial_python" type="serial_node.py" name="$(arg rosserial_name)"
+      output='screen'>
+      <param name="port" value="$(arg arduino_port)" />
+      <param name="baud" value="$(arg arduino_baud)" />
+  </node>
+  
+  <!-- <node pkg="rosserial_python" type="serial_node.py" name="$(arg rosserial_name2)"
+      output='screen'>
+      <param name="port" value="$(arg arduino_port2)" />
+      <param name="baud" value="$(arg arduino_baud)" />
+  </node> -->
+
+  <!-- rosserial node -->
+  <node pkg="icecar" type="voltage_publisher.py" name="voltage_publisher" />
+
+
+
+
+
+
+  <!-- receiver_node -->
+  <!-- <node pkg="vesc_control" type="receiver_control.py" name="receiver"/> -->
+  <!-- <node pkg="icecar" type="drive.py" name="drive"/> -->
+  
+  <!-- <node pkg="icecar" type="run.py" name="run"/> -->
+
+    <!-- <group ns="sensor_1"> -->
+    <!-- <node  name="xsens_mti_node" pkg="xsens_mti_driver" type="xsens_mti_node" output="screen">
+        <rosparam command="load" file="$(find xsens_mti_driver)/param/xsens_mti_node.yaml" />
+    </node> -->
+    <!-- </group> -->
+
+
+   <!-- rplidar node
+    <include file="/home/icelab_nx/catkin_ws/src/rplidar_ros/launch/rplidar_a1.launch" /> -->
+
+    <!-- realsense_node -->
+    <include file="/home/icelab_nx/catkin_ws/src/realsense-ros-2.2.23/realsense2_camera/launch/rs_camera.launch" />
+
+
+
+</launch>

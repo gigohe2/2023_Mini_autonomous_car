@@ -1,0 +1,17 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+  <!-- Arguments -->
+  <arg name="mode" default="0" /> <!-- Default mode is 0 -->
+  <!-- Node running -->
+  <!-- <node pkg="icecar" type="yolo_person.py" name="yolo_person" output="screen"/> -->
+  <node pkg="icecar" type="lane_detection.py" name="lane_detection" output="screen"/>
+  <node pkg="icecar" type="yolo_hunter.py" name="yolo_hunter" output="screen"/>
+  <node pkg="icecar" type="acc_drive.py" name="acc_drive" output="screen"/>
+  <node pkg="icecar" type="gps_drive.py" name="gps_drive" output="screen"/>
+  <node name="drive_node" pkg="icecar" type="run.py" output="screen">
+    <!-- Arguments -->
+    <param name="mode" value="$(arg mode)" />
+  </node>
+  
+
+</launch>
