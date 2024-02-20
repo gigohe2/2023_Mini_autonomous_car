@@ -29,5 +29,29 @@ I ran the experiment on a real path and validated the error. The result is shown
 ![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/f450187d-ea88-4c06-bbcd-db832ca2361c)
 ![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/e9e811d2-a979-4417-a2cb-3b5a750c877b)
 
+From the experimental results, we were able to verify that the lateral path following algorithm allows the small smart car to follow the given path well.
 
+
+### 2. Deep learning based lane-detection algorithm
+By using lane detection model which named 'LaneNet', I developed lane-detection algorithm in 'Carla', a vehicle simulator.
+Moreover, I integrated this lane-detection node with ROS to drive a car while keeping lane.
+
+
+![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/5f865fab-bdaf-41f0-9c6c-9c7348431b07)
+
+It was not easy to apply deep learing based lane-detection algorithm because of so many variables. Then, I applied an image processing algorithm to drive a small autonomous RC car in real environments. It worked well when the sun was out of the camera's FOV. But, when the camera sees the sun directly, It was hard to control the exposure of the camera.
+
+
+![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/4d40c0a9-ab5a-4ac8-96ee-0e1333dc1934)
+
+
+### 3. Deep learning based ACC algorithm
+I developed ACC(adaptive cruise control) to follow the lead vehicle.
+To detect and track the lead vehicle, I used YOLO V8 object detection model. 
+We collected a dataset of the lead vehicle and trained YOLO V8 model. An example dataset is shown below.
+
+![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/c87739cd-cebb-497e-a372-5c420384557b)
+
+
+![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/56d5e13e-c175-46e2-a191-e5702a6e5850)
 
