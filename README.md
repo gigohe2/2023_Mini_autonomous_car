@@ -53,6 +53,11 @@ We collected a dataset of the lead vehicle and trained YOLO V8 model. An example
 ![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/c87739cd-cebb-497e-a372-5c420384557b)
 ![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/28d10763-80ab-4eb5-b859-b75a98d41ebd)
 
+
+I used realsense depth camera to obtain the distance between mini car and the lead vehicle. 
+When the yolo detects the lead vehicle, the output is the bounding box. In the bbox, there are so many outliers which are not the information of the lead vehicle. So, I clustered the depth image to obtain the correct distance of the lead vehicle.
+And then, I used Kalman filter to predict the relative speed between two cars. So, the mini car can follow the lead vehicle regardless of the speed of the lead vehicle.
+To follow the lead vehicle laterally, I caculated the lateral error between the center point of image and the bbox's center point. Considering FOV of the camera, I interpreted the lateral pixel error to the steering value.
 Then, I implemented the validation of ACC algorithm in indoor environments.
 
 
@@ -62,5 +67,12 @@ I used ROS noetic to drive this car. Each nodes have their desired steering and 
 Also, the car status information is published by the each nodes and subscribed by the autonomous vehicle monitoring node.
 
 ### 5. Real-time autonomous driving car monitoring program
+To do experiment on the real environments, I developed real-time autonomous driving car monitoring program.
+By this program, we can check the car status and the driving information in real time.
+We can get current location, speed, battery voltage, RTK state of the mini autonomous car. 
+We can also verify that YOLO is working properly. When the object is detected, you can see the class of that object in object detect box.
+Besides, when the ACC nodes is on, the distance between two cars is shown in the distance box.
 
+
+![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/f687f09d-2b2b-4d35-aca1-a7ebb24c0de9)
 
