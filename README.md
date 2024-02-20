@@ -23,5 +23,11 @@ So, it can reduce cte while the car stays on the path.
 
 ![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/6424e833-6ab4-4cb0-9bd3-743abb9cd7a0)
 
+I ran the experiment on a real path and validated the error. The result is shown below.
+
+
+![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/f450187d-ea88-4c06-bbcd-db832ca2361c)
+![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/e9e811d2-a979-4417-a2cb-3b5a750c877b)
+
 
 
