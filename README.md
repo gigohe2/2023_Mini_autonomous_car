@@ -51,7 +51,16 @@ To detect and track the lead vehicle, I used YOLO V8 object detection model.
 We collected a dataset of the lead vehicle and trained YOLO V8 model. An example dataset is shown below.
 
 ![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/c87739cd-cebb-497e-a372-5c420384557b)
+![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/28d10763-80ab-4eb5-b859-b75a98d41ebd)
+
+Then, I implemented the validation of ACC algorithm in indoor environments.
 
 
-![image](https://github.com/gigohe2/2023_Mini_autonomous_car/assets/59073888/56d5e13e-c175-46e2-a191-e5702a6e5850)
+### 4. ROS integration
+To drive the mini autonomous car, I have to develop each algorithms and gather them.
+I used ROS noetic to drive this car. Each nodes have their desired steering and speed value. Then, the main driver node determines the DRIVING_MODE and publishes the steering and motor speed topic to drive the car. 
+Also, the car status information is published by the each nodes and subscribed by the autonomous vehicle monitoring node.
+
+### 5. Real-time autonomous driving car monitoring program
+
 
